@@ -299,6 +299,8 @@ class FaceSwapScript(scripts.Script):
                             detection_options=self.detection_options,
                         )
                         p.init_images[i] = result
+                        p.extra_generation_params["Reactor Swapin Source Output"] = output
+                        p.extra_generation_params["Reactor Swapin Source Swapped"] = swapped
                         # result_path = get_image_path(p.init_images[i], p.outpath_samples, "", p.all_seeds[i], p.all_prompts[i], "txt", p=p, suffix="-swapped")
                         # if len(output) != 0:
                         #     with open(result_path, 'w', encoding="utf8") as f:
@@ -468,6 +470,8 @@ class FaceSwapScript(scripts.Script):
                 detection_options=self.detection_options,
             )
             self.result = result
+            p.extra_generation_params["Reactor Swapin Target Output"] = output
+            p.extra_generation_params["Reactor Swapin Target Swapped"] = swapped
             try:
                 pp = scripts_postprocessing.PostprocessedImage(result)
                 pp.info = {}
